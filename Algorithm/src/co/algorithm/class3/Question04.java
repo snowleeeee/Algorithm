@@ -11,26 +11,30 @@ public class Question04 {
 		for (int i = 0; i < n; i++) {
 			System.out.print("---------");
 		}
+		System.out.println();
 
 		do {
+			int pc = (pl + pr) / 2;
+			for (int i = 0; i < a.length; i++) {
+
+				if (i == pl) {
+					System.out.print("<-");
+				}
+				if (i == pr) {
+					System.out.print("->");
+				}
+				if (i == pc)
+					System.out.print("+");
+				if (i != pc && i != pr && i != pl)
+					System.out.print("\t");
+			}
 			System.out.println();
 			for (int i = 0; i < a.length; i++) {
 				System.out.print("\t" + a[i]);
 			}
 			System.out.println();
-			int pc = (pl + pr) / 2;
-			System.out.print(pc + "|\t");
-			for (int i = 0; i < a.length; i++) {
 
-				if (i == pl) {
-					System.out.print("<-");
-				} else if (i == pr) {
-					System.out.print("->");
-				} else if (i == pc)
-					System.out.print(i);
-				else
-					System.out.print("\t");
-			}
+			System.out.print(pc + "|\t");
 
 			if (a[pc] == key) {
 				return pc;
@@ -46,10 +50,15 @@ public class Question04 {
 	}
 
 	public static void main(String[] args) {
-		int arr[] = { 1, 2, 3, 4, 5, 8, 9, 10 };
-		int search = 8;
+		int arr[] = { 1, 2, 3, 4, 5, 8, 9 };
+		int search = 9;
 		int result = binSearch(arr, arr.length, search);
 		System.out.println("\n");
-		System.out.println("정답 : " + result);
+		if (result == -1) {
+			System.out.println("찾는 값이 없습니다");
+		} else {
+			System.out.println("정답 : " + result);
+
+		}
 	}
 }
